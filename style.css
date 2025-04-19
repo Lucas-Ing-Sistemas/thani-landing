@@ -1,0 +1,1192 @@
+/* Reset y base */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Logo */
+.hero-logo {
+  width: 150px;
+  height: auto;
+}
+
+/* Título */
+.title-effect {
+  font-size: 2.5rem;
+  color: transparent;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  animation: fadeIn 2s ease forwards;
+  transition: transform 0.3s ease;
+}
+
+.title-effect::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  text-shadow:
+    1px 1px 0 #000,
+    2px 2px 0 #000,
+    3px 3px 0 #000;
+  z-index: -1;
+  opacity: 0;
+  animation: outlineFadeIn 2s ease 0.5s forwards;
+}
+
+.title-effect:hover {
+  transform: scale(1.05);
+}
+
+/* Subtítulo */
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #fff;
+  max-width: 600px;
+}
+
+/* Botón */
+.cta-btn {
+  margin-top: 30px;
+  padding: 12px 30px;
+  background-color: #008f72;
+  text-decoration: none;
+  color: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: transparent;
+  text-decoration: none;
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes outlineFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Botón flotante solo imagen PNG de WhatsApp */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: transparent; /* sin fondo */
+  border: none; /* sin borde */
+  box-shadow: none; /* sin sombra */
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Tooltip */
+.whatsapp-tooltip {
+  position: absolute;
+  right: 60px;
+  background-color: #fff;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+  opacity: 1;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+
+
+
+/* Sección ¿Por qué elegir THANI? */
+.why-thani {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.why-intro {
+  font-size: 1.2rem;
+  color: #008f72;
+  margin-bottom: 10px;
+}
+
+.why-title {
+  font-size: 2rem;
+  color: #008f72;
+  margin-bottom: 40px;
+}
+
+/* Contenedor */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  transition: all 0.3s ease;
+}
+
+/* Cada tarjeta */
+.feature-item {
+  width: 280px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+/* Imagen circular */
+.feature-image {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Texto */
+.feature-text {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Agrandar y resaltar al pasar el mouse */
+.features:hover .feature-item {
+  filter: blur(2px) brightness(0.8);
+  transform: scale(0.95);
+  opacity: 0.6;
+}
+
+.features .feature-item:hover {
+  filter: none;
+  transform: scale(1.05);
+  opacity: 1;
+  z-index: 2;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Texto informativo */
+.feature-text {
+  font-size: 1rem;
+  color: #008f72;
+  line-height: 1.5;
+}
+
+
+
+
+/* Sección del carrusel de imágenes expandibles */
+/* Estilo general de la sección */
+/* Sección general */
+.expand-image-carousel {
+  padding: 60px 20px;
+  background: #fff;
+  color: #000;
+  text-align: center;
+}
+
+.expand-image-carousel h2 {
+  color: #008f72;
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+/* Contenedor externo */
+.carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Carrusel animado */
+.carousel {
+  display: flex;
+  gap: 20px;
+  animation: scrollCarousel 60s linear infinite;
+  width: max-content;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.carousel:hover {
+  animation-play-state: paused;
+}
+
+/* Imagen normal */
+.image-item {
+  flex: 0 0 auto;
+  max-height: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background-color: #ffffff10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto base en todas las imágenes al hacer hover en alguna */
+.carousel:hover .image-item {
+  transform: scale(0.9); /* achicar ligeramente los demás */
+  opacity: 0.7;
+}
+
+/* Efecto sobre la imagen activa (hover) */
+.carousel .image-item:hover {
+  transform: scale(1.1); /* agrandar esta */
+  opacity: 1;
+  z-index: 1;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Imagen dentro del contenedor */
+.image-item img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 16px;
+  transition: transform 0.4s ease;
+}
+
+/* Ocultar scrollbar */
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+.carousel {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Responsive para tablet y móvil */
+@media (max-width: 768px) {
+  .image-item {
+    max-height: 220px;
+  }
+
+  .image-item img {
+    max-height: 220px;
+  }
+
+  .carousel {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  /* Menor efecto hover en móviles (opcional) */
+  .carousel .image-item:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* Animación de scroll */
+@keyframes scrollCarousel {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+
+/* Ocultar botón de WhatsApp dentro de la sección del carrusel */
+.expand-image-carousel .whatsapp-button,
+.expand-image-carousel #whatsapp-btn {
+  display: none !important;
+}
+/* Ocultar botón de WhatsApp cuando el carrusel esté debajo */
+.expand-image-carousel ~ .whatsapp-button {
+  display: none;
+}
+
+
+
+/* Sección informativa con video */
+/* Estilo general de la sección */
+.video-info-section {
+  padding: 80px 20px;
+  background-image: url('./img/thani-1.JPG'); /* Cambia esta ruta si es necesario */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  position: relative;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.5); /* Añadir fondo oscuro semitransparente */
+}
+
+/* Contenedor principal de contenido */
+.video-info-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+}
+
+/* Contenedor de texto */
+.info-text {
+  flex: 1 1 400px;
+  max-width: 600px;
+  z-index: 2; /* Aseguramos que el texto quede por encima del fondo */
+}
+
+/* Estilos de los títulos */
+.info-text h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: white; /* Color blanco */
+}
+
+.info-text h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: white; /* Color blanco */
+}
+
+/* Párrafo */
+.info-text p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: white; /* Color blanco */
+}
+
+/* Efecto de zoom para el texto */
+.zoom-text {
+  opacity: 1; /* Asegúrate de que el texto sea visible */
+  transform: scale(1);
+  transition: all 0.6s ease;
+}
+
+/* Estilo del botón */
+.cta-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 30px;
+  background-color: #008f72;
+  color: white;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #006a53;
+  transform: translateY(-5px);
+}
+
+/* Estilo del video (iframe) */
+.info-video iframe {
+  width: 100%;
+  max-width: 640px; /* Ajusta el tamaño máximo del video */
+  height: 315px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transition: volume 1s ease;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .video-info-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .info-text {
+    max-width: 90%;
+  }
+
+  .info-video iframe {
+    width: 100%;
+    max-width: 100%;
+    height: auto; /* Ajusta la altura del iframe */
+  }
+
+  .cta-btn {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+  }
+}
+
+
+/* Sección de los testimonios */
+.testimonios-section {
+  padding: 20px 0;
+  background-color: #f0f0f0;
+}
+
+.testimonios-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+/* Contenedor de las tarjetas de testimonios */
+.bubbles-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+/* Estilo de cada card */
+.bubble-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 30%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.bubble-card:hover {
+  transform: scale(1.05);  /* Un pequeño zoom al hacer hover */
+  opacity: 1;
+}
+
+/* Imagen dentro de cada testimonio */
+.bubble-img img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Sección del formulario y mapa */
+.form-mapa-section {
+  position: relative;
+  transition: transform 0.3s ease;
+  z-index: 1; /* Asegura que no se solapen */
+}
+
+/* Mueve la sección cuando el mouse pasa sobre los testimonios */
+.testimonios-section:hover + .form-mapa-section {
+  transform: translateY(80px); /* Ajusta la cantidad de desplazamiento */
+  transition: transform 0.5s ease;
+}
+
+/* Ajustes para la caja del formulario */
+.form-container {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-box {
+  padding: 20px;
+}
+
+/* Mapa */
+.map-container iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  border-radius: 10px;
+}
+
+/* Formulario de la sección */
+.formulario-thani {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario-thani input,
+.formulario-thani select {
+  margin-bottom: 15px;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.formulario-thani button {
+  padding: 12px;
+  background-color: #008f72;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formulario-thani button:hover {
+  background-color: #005f50;
+}
+
+
+/*formulario y mapa*/
+
+
+.form-mapa-section {
+  display: flex;
+  position: relative;
+  transition: transform 0.3s ease;
+  z-index: 2;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+.form-container,
+.map-container {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+
+
+/* Caja verde del formulario */
+/* Caja verde del formulario */
+.form-box {
+  background-color: #008f72;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  transition: transform 0.3s ease;
+}
+
+/* ✅ Zoom a la caja cuando se enfoca un input o select dentro del formulario */
+.formulario-thani:focus-within + .form-box,
+.form-box:has(.formulario-thani:focus-within) {
+  transform: scale(1.03);
+}
+
+.form-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Estilos para inputs y selects */
+.formulario-thani label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.formulario-thani input,
+.formulario-thani select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.95rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Prefijo para celular */
+.celular-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.prefix {
+  background-color: #eee;
+  padding: 10px;
+  border-radius: 6px 0 0 6px;
+  font-weight: bold;
+}
+
+.celular-wrapper input {
+  flex: 1;
+  border-radius: 0 6px 6px 0;
+  border-left: none;
+}
+
+.formulario-thani button {
+  margin-top: 20px;
+  padding: 10px 24px;
+  background-color: #ffffff;
+  color: #008f72;
+  border: 2px solid #008f72;
+  border-radius: 50px; /* Esquinas redondeadas tipo pill */
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-weight: 600;
+  width: auto;
+  transition: all 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formulario-thani button:hover {
+  background-color: #008f72;
+  color: #ffffff;
+}
+
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border: none;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+/* 🔁 Responsive: Tablet y Móvil */
+@media (max-width: 1024px) {
+  .form-mapa-section {
+    flex-direction: column;
+  }
+
+  .form-container,
+  .map-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .formulario-thani input,
+  .formulario-thani select {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-box {
+    padding: 20px;
+  }
+
+  .formulario-thani label {
+    font-size: 0.95rem;
+  }
+
+  .prefix {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .formulario-thani button {
+    font-size: 0.95rem;
+  }
+}
+
+
+@keyframes rotar360 {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+
+
+#whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+
+#whatsapp-btn img {
+  width: 30px;
+  height: 30px;
+}
+
+
+
+
+
+.testimonios-section {
+  padding: 60px 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.testimonios-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.bubbles-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.animated-card {
+  width: 300px;
+  height: 320px;
+  perspective: 1000px;
+  outline: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.animated-card:hover .card-inner,
+.animated-card:focus .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  backface-visibility: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  transition: transform 0.5s ease;
+}
+
+.card-front img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+.card-front h3 {
+  margin: 0;
+  color: #008f72;
+  font-size: 1.1rem;
+}
+
+.card-back {
+  background-color: #008f72;
+  color: #fff;
+  transform: rotateY(180deg);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Responsive tablets */
+@media (max-width: 1024px) {
+  .bubbles-container {
+    gap: 20px;
+  }
+  .animated-card {
+    width: 90%;
+    max-width: 280px;
+  }
+}
+
+/* Responsive móviles */
+@media (max-width: 600px) {
+  .testimonios-title {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+  }
+
+  .bubbles-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .animated-card {
+    width: 90%;
+    max-width: 320px;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  .card-inner {
+    height: 100%;
+  }
+
+  .card-front,
+  .card-back {
+    padding: 20px;
+    min-height: 300px;
+  }
+
+  .card-front img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .card-back {
+    font-size: 0.95rem;
+  }
+}
+
+
+.testimonios-section {
+  background: #f7f7f7;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.testimonios-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.testimonios-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Cada tarjeta */
+.testimonio-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  min-width: 260px;
+  flex: 1 1 260px;
+  transition: transform 0.3s ease;
+}
+
+.testimonio-card:hover {
+  transform: translateY(-6px);
+}
+
+.testimonio-card h3 {
+  margin: 12px 0 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.testimonio-card p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  display: block;
+}
+
+/* 📱 Carrusel en móviles */
+@media (max-width: 767px) {
+  .testimonios-wrapper {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+  }
+
+  .testimonio-card {
+    flex: 0 0 80%;
+    scroll-snap-align: center;
+    min-width: 260px;
+  }
+}
+
+/* 📱 Ajuste para tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .testimonios-wrapper {
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .testimonio-card {
+    flex: 0 1 45%;
+    max-width: 90%;
+  }
+}
+
+
+
+
+.testimonios-section {
+  padding: 60px 20px;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+.testimonios-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #008f72;
+  font-weight: 600;
+}
+
+.testimonios-wrapper {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Flip Card */
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 350px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  box-sizing: border-box;
+  background: white;
+}
+
+.flip-card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.flip-card-front h3 {
+  font-size: 1.2rem;
+  color: #008f72;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card-back p {
+  font-size: 0.95rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .testimonios-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flip-card {
+    width: 90%;
+    max-width: 350px;
+  }
+}
+
+
+
+
+.footer-thani {
+  background-color: #008f72;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-social {
+  margin-bottom: 15px;
+}
+
+.footer-social a {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 1.5rem;
+  color: white;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.footer-social a:hover {
+  transform: scale(1.2);
+  color: #ffffff;
+}
+
+.footer-credits p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
