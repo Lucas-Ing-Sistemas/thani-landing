@@ -213,4 +213,72 @@ document.addEventListener('DOMContentLoaded', () => {
     if (formSection) observer.observe(formSection);
     if (footer) observer.observe(footer);
   });
+
   
+
+  
+
+  const form = document.getElementById("formulario-thani");
+  const celularInput = document.getElementById("celular");
+  const errorCelular = document.createElement("small");
+
+  // Estilo del mensaje de error
+  errorCelular.style.color = "red";
+  errorCelular.id = "error-celular";
+  celularInput.parentNode.appendChild(errorCelular);
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nombres = document.getElementById("nombres").value.trim();
+    const celular = celularInput.value.trim();
+    const inicial = document.getElementById("inicial").value;
+    const interes = document.getElementById("interes").value;
+
+    // Validación de campos
+    if (!nombres || !celular || !inicial || !interes) {
+      alert("Por favor, completa todos los campos.");
+      return;
+    }
+
+    // Validación del número de celular (8 dígitos sin el 9)
+    if (!/^[0-9]{8}$/.test(celular)) {
+      errorCelular.textContent = "Debe contener exactamente 8 dígitos después del 9";
+      celularInput.focus();
+      return;
+    }
+
+    errorCelular.textContent = ""; // Limpia el error anterior
+
+    const data = {
+      nombres,
+      celular: "9" + celular,
+      inicial,
+      interes
+    };
+
+    console.log("Enviando datos:", data); // Para depuración
+
+    fetch("https://script.google.com/macros/s/AKfycbyuwtOvUsx0glpJAnlKog6RnZB3fWyZbZT_fPR7-3fdhjMaXlxtZXsu-4FTkoGr7Kmv/exec", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => res.json())
+    .then(response => {
+      console.log("Respuesta del servidor:", response);
+      if (response.result === "success") {
+        document.getElementById("mensaje-enviado").style.display = "block";
+        form.reset();
+      } else {
+        alert("Hubo un error al enviar los datos.");
+      }
+    })
+    .catch(err => {
+      console.error("Error al enviar:", err);
+      alert("Error al conectar con el servidor.");
+    });
+  });
+
